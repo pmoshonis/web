@@ -17,4 +17,3 @@ async function getUser (token) {
 }
 
 export default { loginUser, getUser }
-

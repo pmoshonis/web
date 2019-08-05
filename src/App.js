@@ -1,33 +1,33 @@
 import React, { Component } from 'react'
 
-    import api from './Api'
-    
-    import './App.css'
-    
-    class App extends Component {
+import api from './Api'
+
+import './App.css'
+
+class App extends Component {
       state = {
         user: null,
         email: '',
         password: '',
       }
-    
+
       loginUser = async (e) => {
         e.preventDefault()
-    
+
         const { email, password } = this.state
-    
+
         const { data: token } = await api.loginUser(email, password)
-    
+
         const { data: user } = await api.getUser(token)
-    
+
         this.setState({ user })
       }
-    
+
       inputChange = e => this.setState({ [e.target.id]: e.target.value })
-    
+
       renderLoginForm = () => {
         const { email, password } = this.state
-    
+
         return (
           <form onSubmit={this.loginUser}>
             <h1>An Awesome Form on React</h1>
@@ -45,10 +45,10 @@ import React, { Component } from 'react'
           </form>
         )
       }
-    
+
       render () {
         const { user } = this.state
-    
+
         return (
           <div className="App">
             {user ? (
@@ -60,7 +60,6 @@ import React, { Component } from 'react'
           </div>
         )
       }
-    }
-    
-    export default App
-    
+}
+
+export default App
